@@ -8,23 +8,24 @@ import java.util.ArrayList;
 public class Building {
 
 	//Variables
-	private char iD;
+	private int iD;
 	private String address;
-	public ArrayList<Unit> unitList;
-	public ArrayList<Maintenance> maintenaceList;
-	public ArrayList<Integer> maintencanceSchedule;
+	private ArrayList<Unit> unitList;
+	private ArrayList<Maintenance> maintenanceList;
+	private ArrayList<Integer> maintenanceSchedule;
 	
 	//Constructor
 	public Building() {
-	this.setAddress("unknown");
-	this.setiD((char) 0);
-	this.maintenaceList = new ArrayList<Maintenance>();
-	this.maintencanceSchedule = new ArrayList<Integer>();
+		iD = 0;
+		address = "NULL";
+		unitList = new ArrayList<Unit>();
+		maintenanceList = new ArrayList<Maintenance>();
+		maintenanceSchedule = new ArrayList<Integer>();
 	}
 
 	//Getter for Building ID
-	public char getiD() {
-		return iD;
+	public int getiD() {
+		return this.iD;
 	}
 
 	//Setter for Building ID
@@ -34,7 +35,7 @@ public class Building {
 
 	//Getter for Address
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	//Setter of Address
@@ -44,17 +45,28 @@ public class Building {
 	
 	//Add Unit
 	public void addUnit(Unit u) {
-		
+		this.unitList.add(u);
+		//check for conflict;
+	}
+	
+	public ArrayList<Unit> getUnitList() {
+		return this.unitList;
 	}
 	
 	//Add Maintenance
 	public void addMaintencance(Maintenance m) {
-		
+		this.maintenanceList.add(m);
+		//check for conflict
+		//add to schedule
 	}
 	
-	//Detect Maintainance Conflict
+	public ArrayList<Maintenance> getMiantenanceList() {
+		return this.maintenanceList;
+	}
+	
+	//Detect Maintenance Conflict
 	public void detectConflict(Maintenance m) {
-		
+		//implement later
 	}
 	
 }

@@ -10,19 +10,19 @@ public class RegularUnit {
 	private int numBeds;
 	private int numBaths;
 	private int maxOccupants;
-	public ArrayList<CurrResident> currResidentList;
+	private ArrayList<CurrResident> currResidentList;
 
 	//Constructor
 	public RegularUnit() {
-		this.currResidentList = new ArrayList<CurrResident>();
-		this.setMaxOccupants(100);
-		this.setNumBaths(100);
-		this.setNumBeds(100);
+		currResidentList = new ArrayList<CurrResident>();
+		maxOccupants = 0;
+		numBaths = 0;
+		numBeds = 0;
 	}
 
 	//Getter for numBeds
 	public int getNumBeds() {
-		return numBeds;
+		return this.numBeds;
 	}
 
 	//Setter for numBeds
@@ -32,7 +32,7 @@ public class RegularUnit {
 
 	//Getter for numBath
 	public int getNumBaths() {
-		return numBaths;
+		return this.numBaths;
 	}
 
 	//Setter for numBaths
@@ -42,7 +42,7 @@ public class RegularUnit {
 
 	//Getter of max Occupants
 	public int getMaxOccupants() {
-		return maxOccupants;
+		return this.maxOccupants;
 	}
 
 	//Setter of max Occupants
@@ -57,12 +57,13 @@ public class RegularUnit {
 
 	//Add a resident (Current)
 	public void addCurrResident(CurrResident c) {
-		//HELP ME
+		this.currResidentList.add(c);
+		//check for conflict
 	}
 
 	//Detect Conflict
 	public void detectConflict(CurrResident c) {
-
+		//implement later
 	}
 
 
