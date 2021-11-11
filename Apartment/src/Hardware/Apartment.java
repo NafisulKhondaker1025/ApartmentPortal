@@ -11,12 +11,12 @@ public class Apartment {
 	//Public and Private Variables
 	private String name;
 	private String address;
-	private ArrayList <Building> buildingList;
+	private ArrayList<Building> buildingList;
 	private ArrayList<PotResident> potResidentList;
-	private ArrayList <Employee> employeeList;
-	private ArrayList <Integer> appointmentSchedule;
-	private ArrayList <Appointment> appointmentList;
-	private ArrayList <Announcement> announcementList;
+	private ArrayList<Employee> employeeList;
+	private ArrayList<Integer> appointmentSchedule;
+	private ArrayList<Appointment> appointmentList;
+	private ArrayList<Announcement> announcementList;
 
 	//Constructor
 	public Apartment () {
@@ -68,6 +68,7 @@ public class Apartment {
 	public void addAppointment (Appointment a) {
 		this.appointmentList.add(a);
 		//have a detect conflict to check times?
+		//add schedule of appointment after implementing that
 	}
 
 	//Detect Conflict on the Appointment
@@ -82,5 +83,25 @@ public class Apartment {
 	//Remove an Announcement	
 	public void removeAnnouncement (Announcement a) {
 		this.announcementList.remove(0);
+	}
+	
+	public ArrayList<Building> getBuildingList() {
+		return this.buildingList;
+	}
+	
+	public ArrayList<PotResident> getPotResidentList() {
+		return this.potResidentList;
+	}
+	
+	public ArrayList<Employee> getEmployeeList() {
+		return this.employeeList;
+	}
+	
+	public ArrayList<Appointment> getAppointmentList() {
+		return this.appointmentList;
+	}
+	
+	public ArrayList<Announcement> getAnnouncementList() {
+		return this.announcementList;
 	}
 }
