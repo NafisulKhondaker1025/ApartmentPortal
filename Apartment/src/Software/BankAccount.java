@@ -9,9 +9,9 @@ public class BankAccount {
 	
 	//Constructors
 	public BankAccount () {
-		this.setAccountNumber(123456789);
-		this.setName("John Paul");
-		this.setRoutingNumber(123564);
+		name = "NULL";
+		accountNumber = 0;
+		routingNumber = 0;
 	}
 	
 	//Check account number
@@ -20,37 +20,37 @@ public class BankAccount {
 	}
 	
 	//Check routing number
-		public boolean checkRoutingNumber(int i) {
-			return false;
-		}
+	public boolean checkRoutingNumber(int i) {
+		return false;
+	}
 
-		//Getter for account number
-		public int getAccountNumber() {
-			return accountNumber;
-		}
+	//Getter for account number
+	public int getAccountNumber() {
+		return this.accountNumber;
+	}
 
-		//Setter for account number
-		public void setAccountNumber(int accountNumber) {
-			this.accountNumber = accountNumber;
-		}
+	//Setter for account number
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
 
-		//Getter for name
-		public String getName() {
-			return name;
-		}
+	//Getter for name
+	public String getName() {
+		return this.name;
+	}
 
-		//Setter for name
-		public void setName(String name) {
-			this.name = name;
-		}
+	//Setter for name
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		//Getter for routing number
-		public int getRoutingNumber() {
-			return routingNumber;
-		}
+	//Getter for routing number
+	public int getRoutingNumber() {
+		return this.routingNumber;
+	}
 
-		//Setter for routing number
-		public void setRoutingNumber(int routingNumber) {
-			this.routingNumber = routingNumber;
-		}
+	//Setter for routing number
+	public void setRoutingNumber(int routingNumber) {
+		this.routingNumber = routingNumber;
+	}
 }

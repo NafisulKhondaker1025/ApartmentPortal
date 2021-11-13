@@ -11,24 +11,24 @@ public class Rent {
 	private double waterBill;
 	private double disposalBill;
 	private double lateFine;
-	private boolean islate;
+	private boolean isLate;
 	private Unit unit;
 	public ArrayList<Integer> paymentSchedule;
 
 	//Constructor
 	public Rent() {
-		this.setDisposalBill(2.0);
-		this.setIslate(true);
-		this.setLateFine(40.0);
-		this.setMonthlyRent(400.0);
-		this.setWaterBill(50.0);
-		this.paymentSchedule = new ArrayList<Integer>();
-		this.setUnit(null);
+		monthlyRent = 0;
+		waterBill = 0;
+		disposalBill = 0;
+		lateFine = 0;
+		isLate = false;
+		unit = new Unit();
+		paymentSchedule = new ArrayList<Integer>(); 
 	}
 
-	//Geeter for Monthly Rent
+	//Getter for Monthly Rent
 	public double getMonthlyRent() {
-		return monthlyRent;
+		return this.monthlyRent;
 	}
 
 	//Setter for monthly Rent
@@ -38,7 +38,7 @@ public class Rent {
 
 	//Getter for water bill
 	public double getWaterBill() {
-		return waterBill;
+		return this.waterBill;
 	}
 
 	//Setter for water bill
@@ -48,7 +48,7 @@ public class Rent {
 
 	//Getter for Disposal Bill
 	public double getDisposalBill() {
-		return disposalBill;
+		return this.disposalBill;
 	}
 
 	//Setter for Disposal Bill
@@ -58,7 +58,7 @@ public class Rent {
 
 	//Getter for LateFine
 	public double getLateFine() {
-		return lateFine;
+		return this.lateFine;
 	}
 
 	//Setter for LateFine
@@ -66,19 +66,19 @@ public class Rent {
 		this.lateFine = lateFine;
 	}
 
-	//Booleen for isLate
-	public boolean isIslate() {
-		return islate;
+	//getter for isLate
+	public boolean paymentIsLate() {
+		return this.isLate;
 	}
 
 	//Setter for isLate
-	public void setIslate(boolean islate) {
-		this.islate = islate;
+	public void setIslate(boolean isLate) {
+		this.isLate = isLate;
 	}
 
 	//Getter for unit
 	public Unit getUnit() {
-		return unit;
+		return this.unit;
 	}
 
 	//Setter for Unit
@@ -87,22 +87,25 @@ public class Rent {
 	}
 
 	//Add payment
-	public void addPaymentDate(int i) {	
+	public void addPaymentDate(int i) {
+		this.paymentSchedule.add(i);
 	}	
 
 	//Get Payment
 	public ArrayList<Integer> getPaymentSchedule() {
-		return paymentSchedule;	
+		return this.paymentSchedule;	
 	}
 
 	//Get the next PAYMENT dATE
-	public ArrayList<Integer> getNextPaymentDate() {
-		return paymentSchedule;	
+	public int getNextPaymentDate() {
+		//implement function
+		return 0;	
 	}
 
 	//GET THE TOTAL RENT
-	public double totalRent (int total) {
-		return total;	
+	public double getTotalRent() {
+		//add up all the rent categories to get total
+		return 0;	
 	}
 
 

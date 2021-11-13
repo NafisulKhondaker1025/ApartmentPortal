@@ -7,23 +7,23 @@ public class Appointment {
 	//Variables
 	private int dateTime;
 	private String description;
-	private PotResident potenResident;
+	private PotResident potResident;
 	
 	//Constructors
 	public Appointment () {
-		this.setDateTime(5);
-		this.setDescription("unknown");
-		this.setPotenResident(null);
+		dateTime = 0;
+		description = "NULL";
+		potResident = new PotResident();
 	}
 	
 	//Add Description for the Appointment
 	public void addDescription (String s) {
-		
+		this.description = s;
 	}
 
 	//Getter for dateTime
 	public int getDateTime() {
-		return dateTime;
+		return this.dateTime;
 	}
 
 	//Setter for dateTime
@@ -33,22 +33,17 @@ public class Appointment {
 
 	//Getter for description
 	public String getDescription() {
-		return description;
-	}
-
-	//Setter for description
-	public void setDescription(String description) {
-		this.description = description;
+		return this.description;
 	}
 
 	//Getter for potential resident
 	public PotResident getPotenResident() {
-		return potenResident;
+		return this.potResident;
 	}
 
 	//Setter for potential Resident
-	public void setPotenResident(PotResident potenResident) {
-		this.potenResident = potenResident;
+	public void setPotenResident(PotResident p) {
+		this.potResident = p;
 	}
 
 }

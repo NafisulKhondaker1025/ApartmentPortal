@@ -8,21 +8,21 @@ public class Payment {
 	private double amount;
 	private int method;
 	private BankCard bankCard;
-	private BankAccount banckAccount;
+	private BankAccount bankAccount;
 	private CurrResident currResident;
 	
 	//Constructor
 	public Payment() {
-		this.setAmount(500.0);
-		this.setBanckAccount(null);
-		this.setBankCard(null);
-		this.setCurrResident(null);
-		this.setMethod(5);
+		amount = 0;
+		method = 0;
+		bankCard = new BankCard();
+		bankAccount = new BankAccount();
+		currResident = new CurrResident();
 	}
 
 	//Getter for Amount
 	public double getAmount() {
-		return amount;
+		return this.amount;
 	}
 
 	//Setter for Amount
@@ -32,7 +32,7 @@ public class Payment {
 
 	//Getter for Method
 	public int getMethod() {
-		return method;
+		return this.method;
 	}
 
 	//Setter for Method 
@@ -42,7 +42,7 @@ public class Payment {
 
 	//Getter for BankCard
 	public BankCard getBankCard() {
-		return bankCard;
+		return this.bankCard;
 	}
 
 	//Setter for BankAccount
@@ -52,17 +52,17 @@ public class Payment {
 
 	//Getter for BankAccount
 	public BankAccount getBanckAccount() {
-		return banckAccount;
+		return this.bankAccount;
 	}
 
 	//Setter for BankAccount
 	public void setBanckAccount(BankAccount banckAccount) {
-		this.banckAccount = banckAccount;
+		this.bankAccount = banckAccount;
 	}
 
 	//Getter for currResident
 	public CurrResident getCurrResident() {
-		return currResident;
+		return this.currResident;
 	}
 
 	//Setter for currResident

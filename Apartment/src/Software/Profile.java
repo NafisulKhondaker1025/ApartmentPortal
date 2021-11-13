@@ -6,7 +6,7 @@ public class Profile {
 
 	//Variables
 	private String userName;
-	private String passWord;
+	private String password;
 	private String email;
 	private int phone;
 	private int profileType;
@@ -14,16 +14,17 @@ public class Profile {
 	
 	//Constructor
 	public Profile () {
-		this.setEmail("abc@gmail.com");
-		this.setPassWord("abc");
-		this.setPhone(12345678);
-		this.setProfileType(4);
-		this.setUserName("abcD");
+		userName = "NULL";
+		password = "NULL";
+		email = "NULL";
+		phone = 0;
+		profileType = 0;
+		user = new User();
 	}
 
 	//Getter for userName
 	public String getUserName() {
-		return userName;
+		return this.userName;
 	}
 
 	//Setter for userName
@@ -32,18 +33,18 @@ public class Profile {
 	}
 
 	//Getter for password
-	public String getPassWord() {
-		return passWord;
+	public String getPassword() {
+		return this.password;
 	}
 
 	//Setter for password
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassWord(String password) {
+		this.password = password;
 	}
 	
 	//Getter for email
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	//Setter for email
@@ -53,7 +54,7 @@ public class Profile {
 
 	//Getter for phone
 	public int getPhone() {
-		return phone;
+		return this.phone;
 	}
 
 	//Setter for phone
@@ -63,7 +64,7 @@ public class Profile {
 
 	//Getter for profileType
 	public int getProfileType() {
-		return profileType;
+		return this.profileType;
 	}
 
 	//Setter for profileType
@@ -73,7 +74,7 @@ public class Profile {
 
 	//Getter for User
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	//Setter for User

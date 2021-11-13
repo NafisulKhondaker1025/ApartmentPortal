@@ -6,16 +6,18 @@ public class Announcement {
 	//Variables
 	private String description;
 	private String videoImageUrl;
+	private String date;
 	
 	//Constructors
 	public Announcement() {
-		this.setDescription("Yeah");
-		this.setVideoImageUrl("http.com");
+		description = "NULL";
+		videoImageUrl = "NULL";
+		date = "NULL";
 	}
 
 	//Getter for Description
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	//Setter for description
@@ -25,7 +27,7 @@ public class Announcement {
 
 	//Getter for vieoImageUrl
 	public String getVideoImageUrl() {
-		return videoImageUrl;
+		return this.videoImageUrl;
 	}
 
 	//Setter for video image Url
@@ -33,9 +35,14 @@ public class Announcement {
 		this.videoImageUrl = videoImageUrl;
 	}
 	
-	//Add Descriptions
-	public void addDescription(String s) {
-		
+	//Setter for date
+	public void setDate(String s) {
+		this.date = s;
+	}
+	
+	//Getter for date
+	public String getDate() {
+		return this.date;
 	}
 	
 }

@@ -13,15 +13,15 @@ public class Maintenance {
 	
 	//Constructor
 	public Maintenance() {
-		this.setUnit(null);
-		this.setDateTime(2);
-		this.setDescription("Unknwon");
-		this.setBuilding(null);
+		dateTime = 0;
+		description = "NULL";
+		building = new Building();
+		unit = new Unit();
 	}
 
 	//Getter for time
 	public int getDateTime() {
-		return dateTime;
+		return this.dateTime;
 	}
 
 	//Setter for time
@@ -31,7 +31,7 @@ public class Maintenance {
 
 	//Getter for description
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	//Setter for description
@@ -41,7 +41,7 @@ public class Maintenance {
 
 	//Getter for building
 	public Building getBuilding() {
-		return building;
+		return this.building;
 	}
 
 	//Setter for building
@@ -51,7 +51,7 @@ public class Maintenance {
 
 	//Getter for Unit
 	public Unit getUnit() {
-		return unit;
+		return this.unit;
 	}
 
 	//Setter for unit

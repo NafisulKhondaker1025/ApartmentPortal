@@ -10,33 +10,30 @@ public class BankCard {
 	
 	//Constructors
 	public BankCard() {
-		this.setCardNumber(123456789789456123L);
-		this.setCvv(444);
-		this.setExpiryDate(12/26);
-		this.setName("Chase");
+		name = "NULL";
+		cardNumber = 0;
+		expiryDate = 0;
+		cvv = 0;
 	}
 	
 	//Check card number method
 	public boolean checkCardNumber(long i) {
 		return true;
-		
 	}
 	
 	//Check expiration date
 	public boolean checkExpiryDate(int  i) {
-		return true;
-		
+		return true;		
 	}
 	
 	//Check cvv
 	public boolean checkCvv(int i) {
-		return true;
-		
+		return true;		
 	}
 
 	//Getter for name
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	//Setter for name
@@ -46,7 +43,7 @@ public class BankCard {
 
 	//Getter for Card number
 	public long getCardNumber() {
-		return cardNumber;
+		return this.cardNumber;
 	}
 
 	//Setter for card number
@@ -56,7 +53,7 @@ public class BankCard {
 
 	//Getter for expiry date
 	public int getExpiryDate() {
-		return expiryDate;
+		return this.expiryDate;
 	}
 
 	//Setter for expiry date
@@ -66,7 +63,7 @@ public class BankCard {
 
 	//Getter for cvv
 	public int getCvv() {
-		return cvv;
+		return this.cvv;
 	}
 
 	//Setter for cvv
