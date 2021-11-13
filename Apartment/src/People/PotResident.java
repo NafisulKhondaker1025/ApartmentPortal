@@ -6,21 +6,21 @@ public class PotResident {
 
 	//VARIABLES
 	private String name;
-	private double phone;
+	private int phone;
 	private String email;
 	private Appointment appointment;
 	
 	//CONSTRUCTOR
 	public PotResident () {
-		this.setAppointment(null);
-		this.setEmail("abc@gmail.com");
-		this.setName("Paul");
-		this.setPhone(5205206969.0);
+		name = "NULL";
+		phone = 0;
+		email = "NULL";
+		appointment = new Appointment();	
 	}
 
 	//Getter for name
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	//Setter for name
@@ -29,18 +29,18 @@ public class PotResident {
 	}
 
 	//Getter for phone
-	public double getPhone() {
-		return phone;
+	public int getPhone() {
+		return this.phone;
 	}
 
 	//Setter for phone number
-	public void setPhone(double phone) {
+	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 
 	//Getter for email
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	//Setter for email
@@ -50,7 +50,7 @@ public class PotResident {
 
 	//Getter for Appointment
 	public Appointment getAppointment() {
-		return appointment;
+		return this.appointment;
 	}
 
 	//Setter for Appointment

@@ -14,12 +14,12 @@ public class Employee {
 	
 	//Getter for Schedule
 	public ArrayList<Integer> getSchedule() {
-		return schedule;
+		return this.schedule;
 	}
 
 	//Setter for Schedule
-	public void setSchedule(ArrayList<Integer> schedule) {
-		this.schedule = schedule;
+	public void addSchedule(int a) {
+		this.schedule.add(a);
 	}
 	
 }

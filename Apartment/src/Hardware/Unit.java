@@ -12,20 +12,20 @@ public class Unit {
 	private Building building;
 	private Rent rent;
 	private boolean occupied;
-	public ArrayList<Maintenance> maintanainceList;
+	private ArrayList<Maintenance> maintenanceList;
 	
 	//Constructor
 	public Unit() {
-		this.setBuilding(null);
-		this.maintanainceList = null;
-		this.setNumber(0);
-		this.setOccupied(true);
-		this.setRent(null);
+		number = 0;
+		building = new Building();
+		rent = new Rent();
+		occupied = false;
+		maintenanceList = new ArrayList<Maintenance>();
 	}
 
 	//Getter for number
 	public int getNumber() {
-		return number;
+		return this.number;
 	}
 
 	//Setter for number
@@ -35,7 +35,7 @@ public class Unit {
 
 	//Getter for building
 	public Building getBuilding() {
-		return building;
+		return this.building;
 	}
 
 	//Setter for building
@@ -45,7 +45,7 @@ public class Unit {
 
 	//Getter for rent
 	public Rent getRent() {
-		return rent;
+		return this.rent;
 	}
 
 	//Setter for rent
@@ -55,7 +55,7 @@ public class Unit {
 
 	//getter for boolean isOccupied
 	public boolean isOccupied() {
-		return occupied;
+		return this.occupied;
 	}
 
 	//Setter for boolean isOccupied
@@ -63,5 +63,12 @@ public class Unit {
 		this.occupied = occupied;
 	}
 	
+	public void addMaintenance(Maintenance m) {
+		this.maintenanceList.add(m);
+	}
+	
+	public ArrayList<Maintenance> getMaintenanceList() {
+		return this.maintenanceList;
+	}
 }
 

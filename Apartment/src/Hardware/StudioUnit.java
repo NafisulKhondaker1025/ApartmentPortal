@@ -9,27 +9,23 @@ public class StudioUnit {
 
 	//Constructor
 	public StudioUnit() {
-		this.resident = null;
+		resident = new CurrResident();
 	}
 	
 	//Getter for Resident
 	public CurrResident getCurrResident() {
-		return resident;
+		return this.resident;
 	}
 
-	//Setter for reisdent
-	public void setcurrResident(CurrResident resident) {
+	//Setter for resident
+	public void addCurrResident(CurrResident resident) {
 		this.resident = resident;
+		//detect conflict first
 	}
 	
 	//DetectConflict
 	public void detectConflict(CurrResident c) {
-		
-	}
-	
-	//Add Current resident 
-	public void addCurrResident(CurrResident c) {
-		
+		//implement the function here
 	}
 	 
 }

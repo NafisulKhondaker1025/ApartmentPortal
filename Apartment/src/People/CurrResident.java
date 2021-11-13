@@ -13,21 +13,21 @@ public class CurrResident {
 	private Building building;
 	private Unit unit;
 	private ArrayList<CurrResident> roommateList;
-	private BankCard bankcard;
-	private BankAccount bankaccount;
+	private BankCard bankCard;
+	private BankAccount bankAccount;
 
 	//Constructors
 	public CurrResident () {
-		this.setBankaccount(null);
-		this.setBankcard(null);
-		this.setBuilding(null);
-		this.roommateList = new ArrayList<CurrResident>();
-		this.setUnit(null);
+		building = new Building();
+		unit = new Unit();
+		roommateList = new ArrayList<CurrResident>();
+		bankCard = new BankCard();
+		bankAccount = new BankAccount();
 	}
 
 	//Getter for building
 	public Building getBuilding() {
-		return building;
+		return this.building;
 	}
 
 	//Setter for building
@@ -37,7 +37,7 @@ public class CurrResident {
 
 	//Getter for unit
 	public Unit getUnit() {
-		return unit;
+		return this.unit;
 	}
 
 	//Setter for unit
@@ -46,38 +46,40 @@ public class CurrResident {
 	}
 
 	//Detect conflict in unit
-	public boolean detectConflict (Unit u) {
+	private boolean detectConflict (Unit u) {
+		//implement this function
 		return false;
 	}
-
+	
 	//Getter for roommate
 	public ArrayList<CurrResident> getRoommateList() {
 		return roommateList;
 	}
 
-	//Add Roomate List
+	//Add Roomate
 	public void addRoomate(CurrResident c) {
-
+		this.roommateList.add(c);
+		//detect conflict first;
 	}
 
 	//Getter for BankCard
 	public BankCard getBankcard() {
-		return bankcard;
+		return this.bankCard;
 	}
 
-	//Setter for bankCad
-	public void setBankcard(BankCard bankcard) {
-		this.bankcard = bankcard;
+	//Setter for bankCard
+	public void setBankcard(BankCard b) {
+		this.bankCard = b;
 	}
 
 	//Getter for BankAccount
 	public BankAccount getBankaccount() {
-		return bankaccount;
+		return this.bankAccount;
 	}
 
 	//Setter for BankAccount
-	public void setBankaccount(BankAccount bankaccount) {
-		this.bankaccount = bankaccount;
+	public void setBankaccount(BankAccount b) {
+		this.bankAccount = b;
 	}
 
 

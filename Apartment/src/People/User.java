@@ -12,15 +12,15 @@ public class User {
 	
 	//Constructor
 	public User() {
-		this.setiD(452);
-		this.setLoggedIn(true);
-		this.setName("Paul");
-		this.setProfile(null);
+		name = "NULL";
+		profile = new Profile();
+		iD = 0;
+		loggedIn = false;
 	}
 
 	//Getter for name
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	//Setter for name
@@ -30,7 +30,7 @@ public class User {
 
 	//Getter for profile
 	public Profile getProfile() {
-		return profile;
+		return this.profile;
 	}
 
 	//Setter for Profile
@@ -40,7 +40,7 @@ public class User {
 
 	//Getter for iD
 	public int getiD() {
-		return iD;
+		return this.iD;
 	}
 
 	//Setter for iD
@@ -50,7 +50,7 @@ public class User {
 
 	//Getter for boolean isLoggedIn
 	public boolean isLoggedIn() {
-		return loggedIn;
+		return this.loggedIn;
 	}
 
 	//Setter for isLoggedIn 
