@@ -2,32 +2,41 @@ package Hardware;
 
 import People.CurrResident;
 
-public class StudioUnit {
-
+public class StudioUnit extends Unit {
+	
 	//Variables
-	private CurrResident resident;
 
-	//Constructor
-	public StudioUnit() {
-		resident = new CurrResident();
-	}
-	
-	//Getter for Resident
-	public CurrResident getCurrResident() {
-		return this.resident;
-	}
+		//Constructor
+		public StudioUnit() {
 
-	//Setter for resident
-	public void addCurrResident(CurrResident resident) {
-		this.resident = resident;
-		//detect conflict first
-	}
-	
-	//DetectConflict
-	public void detectConflict(CurrResident c) {
-		//implement the function here
-	}
-	 
+		}
+		
+		//Getter for Resident
+		public CurrResident getCurrResident() {
+			return this.residentList.get(0);
+		}
+
+		//Setter for resident
+		public void addCurrResident(CurrResident resident) {
+			if (this.occupied) {
+				System.out.println("This unit is already occupied.");
+			}
+			else {
+				this.residentList.add(resident);
+				resident.setUnit(this);
+				this.setOccupied();
+				System.out.println("Resident was successfully added to Unit.");
+			}
+			return;
+		}
+		
+		public void setOccupied() {
+			if (this.residentList.size() < 1) {
+				this.occupied = false;
+			}
+			else {
+				this.occupied = true;
+			}
+			return;
+		}
 }
-
-
