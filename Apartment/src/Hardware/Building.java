@@ -45,4 +45,16 @@ public class Building {
 		public ArrayList<Unit> getUnitList() {
 			return this.unitList;
 		}
+		
+		public void printUnits() {
+			System.out.println("Units inside Building " + this.iD + ":");
+			for (Unit u : this.unitList) {
+				if (u instanceof RegularUnit) {
+					System.out.println("Regular Unit " + u.number + " Bedrooms: " + ((RegularUnit)u).getNumBeds() + " Bathrooms: " + ((RegularUnit)u).getNumBaths() + " Rent: " + u.getRent().getMonthlyRent() + " Is fully occupied? " + u.isOccupied());
+				}
+				else if (u instanceof StudioUnit) {
+					System.out.println("Regular Unit " + u.number + " Rent: " + u.getRent().getMonthlyRent() + " Is fully occupied? " + u.isOccupied());
+				}
+			}
+		}
 }

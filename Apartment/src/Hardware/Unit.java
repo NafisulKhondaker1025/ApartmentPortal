@@ -20,7 +20,7 @@ public class Unit {
 		public Unit() {
 			number = 0;
 			building = new Building();
-			rent = new Rent();
+			rent = null;
 			occupied = false;
 			maintenanceList = new ArrayList<Maintenance>();
 			residentList = new ArrayList<CurrResident>();
@@ -64,6 +64,7 @@ public class Unit {
 		
 		public void addMaintenance(Maintenance m) {
 			this.maintenanceList.add(m);
+			m.setUnit(this);
 		}
 		
 		public ArrayList<Maintenance> getMaintenanceList() {
@@ -74,6 +75,15 @@ public class Unit {
 			System.out.println("Unit: " + this.number);
 			for (CurrResident r : this.residentList) {
 				System.out.println("Name: " + r.getName() + "\nID: " + r.getiD() + "\n");
+			}
+		}
+		
+		public void printMaintenanceList() {
+			int i = 0;
+			System.out.println("Maintenance List");
+			for (Maintenance m : this.maintenanceList) {
+				System.out.println(i + ": " + m.getDescription());
+				i++;
 			}
 		}
 }

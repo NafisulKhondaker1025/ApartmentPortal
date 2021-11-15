@@ -8,6 +8,7 @@ import Hardware.RegularUnit;
 import Hardware.StudioUnit;
 import People.CurrResident;
 import People.Employee;
+import People.PotResident;
 
 public class Main {
 
@@ -39,6 +40,14 @@ public class Main {
 		CurrResident r4 = new CurrResident();
 		CurrResident r5 = new CurrResident();
 		
+		//Initialize Potential Resident
+		PotResident pot1 = new PotResident();
+		PotResident pot2 = new PotResident();
+		
+		//Initialize Appointments
+		Appointment app1 = new Appointment();
+		Appointment app2 = new Appointment();
+		
 		//Initialize Employees
 		Employee e1 = new Employee();
 		Employee e2 = new Employee();
@@ -57,6 +66,10 @@ public class Main {
 		Rent rent2 = new Rent(); //Regular Unit 1bed x 1bath
 		Rent rent3 = new Rent(); //Regular Unit 2bed x 2bath
 		
+		//Initialize Announcements
+		Announcement ann1 = new Announcement();
+		Announcement ann2 = new Announcement();
+		
 		//Assign Attributes
 		a.setName("Palm Shadows Apartments");
 		a.setAddress("1815 E Speedway Blvd");
@@ -64,6 +77,18 @@ public class Main {
 		a.addBuilding(b2);
 		a.addEmployee(e1);
 		a.addEmployee(e2);
+		a.addAppointmentSchedule(101);
+		a.addAppointmentSchedule(102);
+		a.addAppointmentSchedule(103);
+		a.addAppointmentSchedule(104);
+		a.addAppointmentSchedule(301);
+		a.addAppointmentSchedule(302);
+		a.addAppointmentSchedule(303);
+		a.addAppointmentSchedule(304);
+		a.addAppointmentSchedule(401);
+		a.addAppointmentSchedule(402);
+		a.addAppointmentSchedule(403);
+		a.addAppointmentSchedule(404);
 		
 		b1.setiD(1);
 		b1.setAddress("1815 E Speedway Blvd");
@@ -153,6 +178,24 @@ public class Main {
 		e2.setName("Giannis Antetokounmpo");
 		e2.setiD(2002);
 		
+		app1.setDateTime(104);
+		app1.addDescription("Want to discuss rent prices of 1 bed units.");
+		
+		app1.setDateTime(301);
+		app1.addDescription("Just wanted to say Hi");
+		
+		pot1.setName("Stephen Curry");
+		pot1.setPhone("909-805-4004");
+		pot1.setEmail("scurry@gmail.com");
+		a.addPotResident(pot1);
+		pot1.setAppointment(app1);
+		
+		pot2.setName("Lebron James");
+		pot2.setPhone("909-805-4005");
+		pot2.setEmail("lbj@gmail.com");
+		a.addPotResident(pot2);
+		pot2.setAppointment(app2);
+		
 		p1.setProfileType(r1);
 		p1.setUserName("apeterson");
 		p1.setPassWord("0001");
@@ -217,20 +260,32 @@ public class Main {
 		rent3.setDisposalBill(15.00);
 		rent3.setLateFine(50.00);
 		
-		Scanner userInput = new Scanner(System.in);
+		ann1.setDate("11/15/2021");
+		ann1.setDescription("Dear residents, building 2 hot water will be down for the rest of the month. Sorry for the inconvenience.");
+		a.addAnnouncement(ann1);
 		
+		ann2.setDate("11/18/2021");
+		ann2.setDescription("Dear residents, Coldplay is coming to perform at our parking lot tomorrow. All residents get free access to this live performance so enjoy the show!!!");
+		a.addAnnouncement(ann2);
+		
+		Scanner userInput = new Scanner(System.in);
+		Profile profile;
 		while (true) {
-			System.out.println("Enter 1 for Current Resident\nEnter 2 for Potential Resident\nEnter 3 for Employee\nEnter 0 to Quit");
+			System.out.println("Enter 1 for Current Resident\nEnter 2 for Employee\nEnter 3 for Potential Resident\nEnter 0 to Quit");
 			int userTypeChoice = userInput.nextInt();
 			
 			if (userTypeChoice == 1) {
 				System.out.println("Enter Username:");
 				String username = userInput.nextLine();
+				userInput.nextLine();
 				System.out.println("Enter Password:");
 				String password = userInput.nextLine();
-				Profile profile = checkCredentials(username, password, a);
+				userInput.nextLine();
+				profile = checkCredentials(username, password, a);
 				if (profile != null) {
+					profile.getResident().setLoggedIn(true);
 					System.out.println("Welcome " + profile.getResident().getName() + "\n");
+					profile.getApartment().printAnnouncementList();
 					while (profile != null) {
 						System.out.println("Enter 1 to Manage Profile\nEnter 2 to put in a Maintenance Order\nEnter 3 to make a Payment\nEnter 0 to Logout");
 						int userChoice = userInput.nextInt();
@@ -240,14 +295,15 @@ public class Main {
 						}
 						
 						else if (userChoice == 2) {
-							
+							addMaintenanceOrder(profile);
 						}
 						
 						else if (userChoice == 3) {
-							
+							makePayment(profile);
 						}
 						
 						else if (userChoice == 0) {
+							profile.getResident().setLoggedIn(false);
 							profile = null;
 						}
 						
@@ -262,15 +318,58 @@ public class Main {
 			}
 			
 			else if (userTypeChoice == 2) {
-				
+				System.out.println("Enter Username:");
+				String username = userInput.nextLine();
+				userInput.nextLine();
+				System.out.println("Enter Password:");
+				String password = userInput.nextLine();
+				userInput.nextLine();
+				profile = checkCredentials(username, password, a);
+				if (profile != null) {
+					profile.getEmployee().setLoggedIn(true);
+					System.out.println("Welcome " + profile.getEmployee().getName() + "\n");
+					while (profile != null) {
+						System.out.println("Enter 1 to Manage Profile\nEnter 2 to make an Anouncement\nEnter 3 to add new Resident\nEnter 4 to view Apartment details\nEnter 0 to Logout");
+						int userChoice = userInput.nextInt();
+						
+						if (userChoice == 1) {
+							manageEmployeeProfile(profile);
+						}
+						
+						else if (userChoice == 2) {
+							makeAnnouncement(profile);
+						}
+						
+						else if (userChoice == 3) {
+							addNewResident(profile);
+						}
+						
+						else if (userChoice == 4) {
+							viewApartmentDetails(profile);
+						}
+						
+						else if (userChoice == 0) {
+							profile.getEmployee().setLoggedIn(false);
+							profile = null;
+						}
+						
+						else {
+							System.out.println("Invalid input!\n");
+						}
+					}
+				}
+				else {
+					System.out.println("Invalid Credentials!\n");
+				}
 			}
 			
 			else if (userTypeChoice == 3) {
-				
+				makeAppointment(a);
 			}
 			
 			else if (userTypeChoice == 0) {
 				userInput.close();
+				System.out.println("Closing Apartment Portal.....Good Bye");
 				return;
 			}
 			
@@ -326,9 +425,11 @@ public class Main {
 			else if (userChoice == 5) {
 				System.out.println("Enter New Bank Card Number: ");
 				i = userInput.nextInt();
+				userInput.nextLine();
 				p.getResident().getBankcard().setCardNumber(i);
 				System.out.println("Enter New Bank Card Expiry Date: ");
 				s = userInput.nextLine();
+				userInput.nextLine();
 				p.getResident().getBankcard().setExpiryDate(s);
 				System.out.println("Enter New Bank Card CVV: ");
 				i = userInput.nextInt();
@@ -354,8 +455,270 @@ public class Main {
 		}
 	}
 	
-	public void addMaintenanceOrder(Profile p) {
-		
+	public static void manageEmployeeProfile(Profile p) {
+		Scanner userInput = new Scanner(System.in);
+		String s;
+		while (true) {
+			p.printProfileInfo();
+			System.out.println("Enter 1 to change Username\nEnter 2 to change Password\nEnter 3 to change Email\nEnter 4 to change Phone Number\nEnter 0 to go back");
+			int userChoice = userInput.nextInt();
+			userInput.nextLine();
+			
+			if (userChoice == 1) {
+				System.out.println("Enter New Username: ");
+				s = userInput.nextLine();
+				p.setUserName(s);
+			}
+			
+			else if (userChoice == 2) {
+				System.out.println("Enter New Password: ");
+				s = userInput.nextLine();
+				p.setPassWord(s);
+			}
+			
+			else if (userChoice == 3) {
+				System.out.println("Enter New Email: ");
+				s = userInput.nextLine();
+				p.setEmail(s);
+			}
+			else if (userChoice == 4) {
+				System.out.println("Enter New Phone Number: ");
+				s = userInput.nextLine();
+				p.setPhone(s);
+			}
+			
+			else if (userChoice == 0) {
+				userInput.close();
+				return;
+			}
+			else {
+				System.out.println("Invalid Input!\n");
+			}
+		}
+	}
+	
+	public static void addMaintenanceOrder(Profile p) {
+		Scanner userInput = new Scanner(System.in);
+		String s;
+		while (true) {
+			System.out.println("Enter 1 to display past Maintenance Orders\nEnter 2 to add new Maintenance Order\nEnter 0 to go back");
+			int userChoice = userInput.nextInt();
+			userInput.nextLine();
+			if (userChoice == 1) {
+				if (p.getResident().getUnit().getMaintenanceList().size() == 0) {
+					System.out.println("No past Maintenance orders to display.");
+				}
+				else {
+					p.getResident().getUnit().printMaintenanceList();
+				}
+			}	
+			else if (userChoice == 2) {
+				System.out.println("Enter Maintenace Description: ");
+				s = userInput.nextLine();
+				Maintenance m = new Maintenance();
+				m.setDescription(s);
+				p.getResident().getUnit().addMaintenance(m);
+			}
+			
+			else if (userChoice == 0) {
+				userInput.close();
+				return;
+			}
+			else {
+				System.out.println("Invalid Input!\n");
+			}
+		}
+	}
+	
+	public static void makePayment(Profile p) {
+		Scanner userInput = new Scanner(System.in);
+		double d;
+		while (true) {
+			System.out.println("Enter 1 to view Payment History\nEnter 2 for Card Payment\nEnter 3 for eCheck Payment\nEnter 0 to go back");
+			int userChoice = userInput.nextInt();
+			userInput.nextLine();
+			if (userChoice == 1) {
+				if (p.getResident().getPaymentList().size() == 0) {
+					System.out.println("No past payments to display.");
+				}
+				else {
+					p.getResident().printPaymentHistory();
+				}
+			}
+			else if (userChoice == 2) {
+				if(p.getResident().getBankcard().getCardNumber() == 0) {
+					System.out.println("You do not have a Credit/Debit card saved to your profile. Please do so and try again.");
+				}
+				else {
+					Payment pay = new Payment();
+					pay.setMethod(1);
+					pay.setBankCard(p.getResident().getBankcard());
+					System.out.println("Enter Payment amount: ");
+					d = userInput.nextDouble();
+					pay.setAmount(d);
+					p.getResident().addPayment(pay);
+					System.out.println("Payment Successful");
+				}
+			}	
+			else if (userChoice == 3) {
+				if(p.getResident().getBankaccount().getAccountNumber() == 0) {
+					System.out.println("You do not have a Bank Account saved to your profile. Please do so and try again.");
+				}
+				else {
+					Payment pay = new Payment();
+					pay.setMethod(2);
+					pay.setBankAccount(p.getResident().getBankaccount());
+					System.out.println("Enter Payment amount: ");
+					d = userInput.nextDouble();
+					pay.setAmount(d);
+					p.getResident().addPayment(pay);
+					System.out.println("Payment Successful");
+				}
+			}
+			
+			else if (userChoice == 0) {
+				userInput.close();
+				return;
+			}
+			else {
+				System.out.println("Invalid Input!\n");
+			}
+		}
+	}
+	
+	public static void makeAnnouncement(Profile p) {
+		Scanner userInput = new Scanner(System.in);
+		String s;
+		Announcement a = new Announcement();
+		System.out.println("Enter date mm/dd/yy: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		a.setDate(s);
+		System.out.println("Enter Title: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		a.setTitle(s);
+		System.out.println("Enter Description: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		a.setDescription(s);
+		System.out.println("Enter video/image URL: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		a.setVideoImageUrl(s);
+		p.getApartment().addAnnouncement(a);
+		System.out.println("Announcement Posted.");
+		userInput.close();
+	}
+	
+	public static void addNewResident(Profile p) {
+		Scanner userInput = new Scanner(System.in);
+		String s;
+		int i;
+		int j;
+		CurrResident r = new CurrResident();
+		System.out.println("Enter the name of the new Resident: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		r.setName(s);
+		System.out.println("Enter the ID of the new Resident: ");
+		i = userInput.nextInt();
+		r.setiD(i);
+		System.out.println("Enter temporary username for the resident: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		r.getProfile().setUserName(s);
+		System.out.println("Enter temporary password for the resident: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		r.getProfile().setPassWord(s);
+		System.out.println("Which buiding would you like to assign this Resident to? Enter the row number");
+		p.getApartment().printBuildingList();
+		i = userInput.nextInt();
+		while(i < 1 || i > p.getApartment().getBuildingList().size()) {
+			System.out.println("Invald Input! Please try again");
+			System.out.println("Which buiding would you like to assign this Resident to? Enter the row number");
+			p.getApartment().printBuildingList();
+			i = userInput.nextInt();
+		}
+		System.out.println("Which unit would you like to assign this Resident to? Enter the row number");
+		p.getApartment().getBuildingList().get(i-1).printUnits();
+		j = userInput.nextInt();
+		while(j < 1 || j > p.getApartment().getBuildingList().get(i-1).getUnitList().size()) {
+			System.out.println("Invald Input! Please try again");
+			System.out.println("Which unit would you like to assign this Resident to? Enter the row number");
+			p.getApartment().getBuildingList().get(i-1).printUnits();
+			j = userInput.nextInt();
+		}
+		r.getProfile().setApartment(p.getApartment());
+		r.setUnit(p.getApartment().getBuildingList().get(i-1).getUnitList().get(j-1));
+		System.out.println(r.getName() + " has been added to Unit " + p.getApartment().getBuildingList().get(i-1).getUnitList().get(j-1).getNumber() + " of Building " + p.getApartment().getBuildingList().get(i-1).getiD());
+		userInput.close();
+	}
+	
+	public static void viewApartmentDetails(Profile p) {
+		Scanner userInput = new Scanner(System.in);
+		int userChoice;
+		while (true) {
+			System.out.println("Enter 1 to view Residents\nEnter 2 to view Employee List\nEnter 3 to view Scheduled Appointments Enter\nEnter 4 to view Announcements\nEnter 0 to go back");
+			userChoice = userInput.nextInt();
+			if (userChoice == 1) {
+				p.getApartment().printCurrResidentList();
+			}
+			else if (userChoice == 2) {
+				p.getApartment().printEmployeeList();
+			}
+			else if (userChoice == 3) {
+				p.getApartment().printScheduledAppointments();	
+			}
+			else if (userChoice == 4) {
+				p.getApartment().printAnnouncementList();
+			}
+			else if (userChoice == 0) {
+				userInput.close();
+				return;
+			}
+			else {
+				System.out.println("Invalid Input!\n");
+			}
+		}
+	}
+	
+	public static void makeAppointment(Apartment a) {
+		Scanner userInput = new Scanner(System.in);
+		String s;
+		int i;
+		PotResident p = new PotResident();
+		System.out.println("Thank you for considering " + a.getName() + " You can create an appointment to talk to one of our representives or receive a tour.");
+		System.out.println("Enter your name: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		p.setName(s);
+		System.out.println("Enter your phone number: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		p.setPhone(s);
+		System.out.println("Enter your email: ");
+		s = userInput.nextLine();
+		userInput.nextLine();
+		p.setEmail(s);
+		a.addPotResident(p);
+		System.out.println("Please select from the available appointment time slots. Enter the row number to select.");
+		a.printAvailableAppointmentSchedule();
+		i = userInput.nextInt();
+		while(i < 1 || i > a.getAppointmentSchedule().size()) {
+			System.out.println("Invalid Input!!!");
+			System.out.println("Please select from the available appointment time slots. Enter the row number to select.");
+			a.printAvailableAppointmentSchedule();
+		}
+		Appointment app = new Appointment();
+		System.out.println("Please add a short description for you appointment.");
+		s = userInput.nextLine();
+		app.addDescription(s);
+		userInput.nextLine();
+		app.setDateTime(a.getAppointmentSchedule().get(i-1));
+		System.out.println("Thank you for making an appointment. We look forward to meeting you soon!");
+		userInput.close();
 	}
 	
 }

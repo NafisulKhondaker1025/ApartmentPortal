@@ -29,6 +29,8 @@ public class Apartment {
 			appointmentSchedule = new ArrayList<Integer>();
 			buildingList = new ArrayList<Building>();
 			employeeList = new ArrayList<Employee>();
+			potResidentList = new ArrayList<PotResident>();
+			profileList = new ArrayList<Profile>();
 		}
 
 		//Getter for Name
@@ -59,6 +61,7 @@ public class Apartment {
 		//Add a potential Resident
 		public void addPotResident(PotResident p) {
 			this.potResidentList.add(p);
+			p.setApartment(this);
 		}
 
 		//Add an Employee	
@@ -81,7 +84,7 @@ public class Apartment {
 			this.announcementList.remove(a);
 		}
 		
-		public void removeAppointmentTime (int a) {
+		public void removeAppointmentTime (Integer a) {
 			this.appointmentSchedule.remove(a);
 		}
 		

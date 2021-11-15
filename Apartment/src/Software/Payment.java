@@ -56,7 +56,7 @@ public class Payment {
 		}
 
 		//Setter for BankAccount
-		public void setBanckAccount(BankAccount banckAccount) {
+		public void setBankAccount(BankAccount banckAccount) {
 			this.bankAccount = banckAccount;
 		}
 

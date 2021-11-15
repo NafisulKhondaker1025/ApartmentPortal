@@ -7,7 +7,7 @@ public class PotResident {
 	
 	//VARIABLES
 		private String name;
-		private int phone;
+		private String phone;
 		private String email;
 		private Appointment appointment;
 		private Apartment apartment;
@@ -15,9 +15,9 @@ public class PotResident {
 		//CONSTRUCTOR
 		public PotResident () {
 			name = "NULL";
-			phone = 0;
+			phone = "NULL";
 			email = "NULL";
-			appointment = new Appointment();
+			appointment = null;
 			apartment = new Apartment();
 		}
 
@@ -32,12 +32,12 @@ public class PotResident {
 		}
 
 		//Getter for phone
-		public int getPhone() {
+		public String getPhone() {
 			return this.phone;
 		}
 
 		//Setter for phone number
-		public void setPhone(int phone) {
+		public void setPhone(String phone) {
 			this.phone = phone;
 		}
 
