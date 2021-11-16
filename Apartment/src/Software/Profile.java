@@ -107,6 +107,7 @@ public class Profile {
 		public void setProfileType(CurrResident r) {
 			this.profileType = 1;
 			this.setResident(r);
+			r.setProfile(this);
 		}
 		
 		//Setter for profileType
@@ -121,6 +122,7 @@ public class Profile {
 
 		public void setApartment(Apartment apartment) {
 			this.apartment = apartment;
+			apartment.addProfile(this);
 		}
 		
 		private void setResident(CurrResident r) {
@@ -141,7 +143,7 @@ public class Profile {
 		
 		public void printProfileInfo() {
 			if (this.profileType == 1) {
-				System.out.println("Username: " + this.userName + "\nPassword: " + this.password + "\nEmail: " + this.email + "\nPhone Number: " + this.phone + "\nBank Account: " + this.resident.getBankaccount() + "\nBank Card: " + this.resident.getBankcard() + "\n");
+				System.out.println("Username: " + this.userName + "\nPassword: " + this.password + "\nEmail: " + this.email + "\nPhone Number: " + this.phone + "\nBank Account: " + this.resident.getBankaccount().getAccountNumber() + "\nBank Card: " + this.resident.getBankcard().getCardNumber() + "\n");
 			}
 			else {
 				System.out.println("Username: " + this.userName + "\nPassword: " + this.password + "\nEmail: " + this.email + "\nPhone Number: " + this.phone + "\n");

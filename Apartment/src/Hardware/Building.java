@@ -53,7 +53,7 @@ public class Building {
 					System.out.println("Regular Unit " + u.number + " Bedrooms: " + ((RegularUnit)u).getNumBeds() + " Bathrooms: " + ((RegularUnit)u).getNumBaths() + " Rent: " + u.getRent().getMonthlyRent() + " Is fully occupied? " + u.isOccupied());
 				}
 				else if (u instanceof StudioUnit) {
-					System.out.println("Regular Unit " + u.number + " Rent: " + u.getRent().getMonthlyRent() + " Is fully occupied? " + u.isOccupied());
+					System.out.println("Studio Unit " + u.number + " Rent: " + u.getRent().getMonthlyRent() + " Is fully occupied? " + u.isOccupied());
 				}
 			}
 		}

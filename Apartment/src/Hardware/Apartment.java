@@ -158,7 +158,7 @@ public class Apartment {
 		public void printScheduledAppointments() {
 			System.out.println("Scheduled Appointment Times:");
 			for (PotResident p : this.potResidentList) {
-				System.out.println("Name: " + p.getName() + "Time: " + week[(p.getAppointment().getDateTime() / 100) - 1] + " " + slot[(p.getAppointment().getDateTime() % 100) - 1] );
+				System.out.println("Name: " + p.getName() + " Time: " + week[(p.getAppointment().getDateTime() / 100) - 1] + " " + slot[(p.getAppointment().getDateTime() % 100) - 1] );
 			}
 		}
 		
