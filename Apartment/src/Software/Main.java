@@ -2,6 +2,7 @@ package Software;
 
 import java.util.Scanner;
 
+import GUI.EmployeeWindow;
 import Hardware.Apartment;
 import Hardware.Building;
 import Hardware.RegularUnit;
@@ -268,6 +269,8 @@ public class Main {
 		ann2.setDate("11/18/2021");
 		ann2.setDescription("Dear residents, Coldplay is coming to perform at our parking lot tomorrow. All residents get free access to this live performance so enjoy the show!!!");
 		a.addAnnouncement(ann2);
+		
+		EmployeeWindow ew = new EmployeeWindow(a.getProfileList().get(5));
 		
 		Scanner userInput = new Scanner(System.in);
 		Profile profile;
@@ -741,3 +744,4 @@ public class Main {
 	}
 	
 }
+

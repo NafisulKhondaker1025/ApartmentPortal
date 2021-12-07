@@ -170,4 +170,13 @@ public class Apartment {
 				System.out.println(a.getDescription() + "\n");
 			}
 		}
+		
+		public Building findBuilding(int s) {
+			for (Building b1 : this.buildingList) {
+				if (b1.getiD() == s) {
+					return b1;
+				}
+			}
+			return null;
+		}
 }

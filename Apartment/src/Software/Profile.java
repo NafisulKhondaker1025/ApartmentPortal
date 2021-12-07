@@ -43,7 +43,7 @@ public class Profile {
 			}
 		}
 		
-		private boolean detectConflict(String userName) {
+		public boolean detectConflict(String userName) {
 			for (Profile p : this.apartment.getProfileList()) {
 				if (userName.equals(p.getUserName())) {
 					System.out.println("Username already taken.");
@@ -78,7 +78,7 @@ public class Profile {
 			}
 		}
 		
-		private boolean detectConflictEmail(String email) {
+		public boolean detectConflictEmail(String email) {
 			for (Profile p : this.apartment.getProfileList()) {
 				if (email.equals(p.getEmail())) {
 					System.out.println("Email already associated with another profile.");
@@ -148,5 +148,16 @@ public class Profile {
 			else {
 				System.out.println("Username: " + this.userName + "\nPassword: " + this.password + "\nEmail: " + this.email + "\nPhone Number: " + this.phone + "\n");
 			}
+		}
+		
+		public String printProfileInfoGUI() {
+			String outp = new String();
+			if (this.profileType == 1) {
+				outp += "Username: " + this.userName + "\nPassword: " + this.password + "\nEmail: " + this.email + "\nPhone Number: " + this.phone + "\nBank Account: " + this.resident.getBankaccount().getAccountNumber() + "\nBank Card: " + this.resident.getBankcard().getCardNumber() + "\n";
+			}
+			else {
+				outp += "Username: " + this.userName + "\nPassword: " + this.password + "\nEmail: " + this.email + "\nPhone Number: " + this.phone + "\n";
+			}
+			return outp;
 		}
 }
